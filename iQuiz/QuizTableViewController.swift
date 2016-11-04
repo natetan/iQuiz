@@ -31,6 +31,29 @@ class QuizTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func settingsButton(_ sender: AnyObject) {
+        // Create the alert controller
+        let alertController = UIAlertController(title: "Settings go here", message: "", preferredStyle: .alert)
+        
+        // Create the actions
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+            UIAlertAction in
+            NSLog("OK Pressed")
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) {
+            UIAlertAction in
+            NSLog("Cancel Pressed")
+        }
+        
+        // Add the actions
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+        
+        // Present the controller
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
     // MARK: - Table view data source
     
     /*

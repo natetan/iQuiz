@@ -63,7 +63,13 @@
                             <outlet property="delegate" destination="5Hi-Qr-pR7" id="7f7-OK-tuu"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="iQuiz" id="Cho-el-52w"/>
+                    <navigationItem key="navigationItem" title="iQuiz" id="Cho-el-52w">
+                        <barButtonItem key="leftBarButtonItem" title="Settings" id="k5t-n2-i3z">
+                            <connections>
+                                <action selector="settingsButton:" destination="5Hi-Qr-pR7" id="0FC-Bf-jK5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lI4-cN-ebe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
