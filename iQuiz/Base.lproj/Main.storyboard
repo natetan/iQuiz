@@ -26,7 +26,9 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="iQuiz" id="6Ez-xT-BQw"/>
+                    <navigationItem key="navigationItem" title="iQuiz" id="6Ez-xT-BQw">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="aaq-a7-eUe"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
