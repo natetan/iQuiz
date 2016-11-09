@@ -76,10 +76,10 @@
             </objects>
             <point key="canvasLocation" x="248.80000000000001" y="36.431784107946029"/>
         </scene>
-        <!--View Controller-->
+        <!--Question View Controller-->
         <scene sceneID="Fg3-Tl-vBg">
             <objects>
-                <viewController id="YMC-K5-yvU" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="QuestionViewController" id="YMC-K5-yvU" customClass="QuestionViewController" customModule="iQuiz" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dXx-8i-nBG"/>
                         <viewControllerLayoutGuide type="bottom" id="kfu-Ra-F5L"/>
@@ -88,10 +88,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t1h-9t-qi5">
-                                <frame key="frameInset" minX="166" minY="70" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mathematics" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t1h-9t-qi5">
+                                <frame key="frameInset" minX="16" minY="65" width="343" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -113,18 +113,28 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="What is 1 + 1 * 900 + 0 * 0 + 100 * 5! * 0?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2EN-Ga-UAk">
+                                <frame key="frameInset" minX="16" minY="212" width="343" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="titleLabel" destination="t1h-9t-qi5" id="YWf-bo-KjE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TFQ-MB-gO7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1158" y="36"/>
+            <point key="canvasLocation" x="1157.5999999999999" y="35.532233883058474"/>
         </scene>
-        <!--View Controller-->
+        <!--Answer View Controller-->
         <scene sceneID="zvc-7x-cNh">
             <objects>
-                <viewController id="9Ay-U2-dxJ" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AnswerViewController" id="9Ay-U2-dxJ" customClass="AnswerViewController" customModule="iQuiz" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VSR-Pc-Ply"/>
                         <viewControllerLayoutGuide type="bottom" id="k0U-D8-ZzS"/>
@@ -134,12 +144,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Answer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bq6-ki-t2T">
-                                <frame key="frameInset" minX="16" minY="96" width="343" height="21"/>
+                                <frame key="frameInset" minX="16" minY="65" width="343" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YAN-PH-sUH">
+                                <frame key="frameInset" minY="623" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem id="pFd-o1-Zl7">
+                                        <barButtonItem key="leftBarButtonItem" title="Home" id="n7s-qC-KpV">
+                                            <connections>
+                                                <segue destination="5Hi-Qr-pR7" kind="presentation" id="2Hy-wC-Jdt"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Next" id="ar4-bF-WDc"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>

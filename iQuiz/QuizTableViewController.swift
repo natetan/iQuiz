@@ -54,6 +54,16 @@ class QuizTableViewController: UITableViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
+    func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+        if (segue.identifier == "QuestionViewController") {
+            print("inside viewcontroller")
+            var questionViewController = segue!.destination as! QuestionViewController;
+            
+            questionViewController.titleLabel.text = "Segue information worked"
+            
+        }
+    }
+    
     // MARK: - Table view data source
     
     /*
