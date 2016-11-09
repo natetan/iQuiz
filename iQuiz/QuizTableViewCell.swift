@@ -2,7 +2,7 @@
 //  QuizTableViewCell.swift
 //  iQuiz
 //
-//  Created by iGuest on 11/3/16.
+//  Created by Yulong Tan on 11/3/16.
 //  Copyright © 2016 yulongproductions. All rights reserved.
 //
 

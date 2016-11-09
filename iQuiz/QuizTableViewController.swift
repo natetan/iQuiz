@@ -2,7 +2,7 @@
 //  QuizTableViewController.swift
 //  iQuiz
 //
-//  Created by iGuest on 11/3/16.
+//  Created by Yulong Tan on 11/3/16.
 //  Copyright © 2016 yulongproductions. All rights reserved.
 //
 
@@ -14,7 +14,7 @@ class QuizTableViewController: UITableViewController {
         ["category": "Mathematics", "desc": "Math stuff", "image": "math-icon"],
         ["category": "Marvel Superheroes", "desc": "Spider-Man and his homies", "image": "marvel-icon"],
         ["category": "Science", "desc": "Science facts", "image": "science-icon"],
-    ]
+        ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,13 +55,9 @@ class QuizTableViewController: UITableViewController {
     }
     
     func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        if (segue.identifier == "QuestionViewController") {
-            print("inside viewcontroller")
-            var questionViewController = segue!.destination as! QuestionViewController;
-            
-            questionViewController.titleLabel.text = "Segue information worked"
-            
-        }
+        print("inside viewcontroller")
+        let questionViewController = segue!.destination as! QuestionViewController;
+        questionViewController.text = "Segue information worked"
     }
     
     // MARK: - Table view data source

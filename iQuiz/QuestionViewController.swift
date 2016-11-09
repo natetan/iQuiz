@@ -2,13 +2,14 @@
 //  QuestionViewController.swift
 //  iQuiz
 //
-//  Created by iGuest on 11/8/16.
+//  Created by Yulong Tan on 11/8/16.
 //  Copyright © 2016 yulongproductions. All rights reserved.
 //
 
 import UIKit
 
 class QuestionViewController: UIViewController {
+    var text: String!
 
     @IBOutlet weak var titleLabel: UILabel!
     
@@ -16,6 +17,7 @@ class QuestionViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        titleLabel.text = text
     }
 
     override func didReceiveMemoryWarning() {

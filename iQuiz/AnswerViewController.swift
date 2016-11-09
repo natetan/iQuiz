@@ -2,7 +2,7 @@
 //  AnswerViewController.swift
 //  iQuiz
 //
-//  Created by iGuest on 11/8/16.
+//  Created by Yulong Tan on 11/8/16.
 //  Copyright © 2016 yulongproductions. All rights reserved.
 //
 
