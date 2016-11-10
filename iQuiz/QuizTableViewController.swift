@@ -9,6 +9,8 @@
 import UIKit
 
 class QuizTableViewController: UITableViewController {
+    private var questionvc : QuestionViewController!
+    private var data = [QuestionModel]()
     
     var model : [[String:String]] = [
         ["category": "Mathematics", "desc": "Math stuff", "image": "math-icon"],
@@ -54,11 +56,11 @@ class QuizTableViewController: UITableViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        print("inside viewcontroller")
-        let questionViewController = segue!.destination as! QuestionViewController;
-        questionViewController.text = "Segue information worked"
-    }
+//    func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+//        print("inside viewcontroller")
+//        let questionViewController = segue!.destination as! QuestionViewController;
+//        // questionViewController.text = "Segue information worked"
+//    }
     
     // MARK: - Table view data source
     
@@ -78,9 +80,22 @@ class QuizTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Quiz Cell", for: indexPath) as! QuizTableViewCell
         
         // Configure the cell...
-        cell.titleLabel.text = model[indexPath.row]["category"]!
-        cell.descLabel.text = model[indexPath.row]["desc"]!
-        cell.setImage(imageName: model[indexPath.row]["image"]!)
+        let title = model[indexPath.row]["category"]!
+        let description = model[indexPath.row]["desc"]!
+        let image = model[indexPath.row]["image"]!
+        let questionModel = QuestionModel(title: title, desc: description, imageName: image)
+        self.data.append(questionModel)
+        self.questionvc = storyboard?.instantiateViewController(withIdentifier: "QuestionViewController") as! QuestionViewController
+        print(self.questionvc)
+        // self.questionvc.data = self.data[indexPath.row]
+        print(self.data[indexPath.row].title)
+        print(self.questionvc)
+        self.questionvc.titleLabel.text = self.data[indexPath.row].title
+        cell.titleLabel.text = title
+        cell.descLabel.text = description
+        cell.setImage(imageName: image)
+        NSLog("\(self.questionvc.data)")
+        
         return cell
     }
     

@@ -9,7 +9,7 @@
 import UIKit
 
 class QuestionViewController: UIViewController {
-    var text: String!
+    var data: QuestionModel!
 
     @IBOutlet weak var titleLabel: UILabel!
     
@@ -17,7 +17,8 @@ class QuestionViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        titleLabel.text = text
+        // print(data)
+        // titleLabel.text = data.title
     }
 
     override func didReceiveMemoryWarning() {

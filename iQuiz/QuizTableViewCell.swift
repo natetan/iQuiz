@@ -9,6 +9,7 @@
 import UIKit
 
 class QuizTableViewCell: UITableViewCell {
+    
 
     @IBOutlet weak var titleLabel: UILabel!
     
