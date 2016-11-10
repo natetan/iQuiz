@@ -9,18 +9,30 @@
 import UIKit
 
 class QuizTableViewController: UITableViewController {
-    private var questionvc : QuestionViewController!
-    private var data = [QuestionModel]()
+    var passTitle: String!
+    var questionModel: QuestionModel!
+    var count: Int = 0
     
     var model : [[String:String]] = [
         ["category": "Mathematics", "desc": "Math stuff", "image": "math-icon"],
         ["category": "Marvel Superheroes", "desc": "Spider-Man and his homies", "image": "marvel-icon"],
-        ["category": "Science", "desc": "Science facts", "image": "science-icon"],
-        ]
+        ["category": "Science", "desc": "Science facts", "image": "science-icon"]
+    ]
+    
+    var questions : [String] = [
+        "What is 2 + 2?",
+        "How did Spider-Man get his powers?",
+        "What is fire?"
+    ]
+    
+    var answers : [[String]] = [
+        ["4","22","An irrational number","Nobody knows"],
+        ["He was bitten by a radioactive spider","He ate a radioactive spider","He is a radioactive spider","He looked at a radioactive spider"],
+        ["One of the four classical elements","A magical reaction given to us by Prometheus","A band that hasn't yet been discovered","Fire! Fire! Fire! heh-heh"]
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -56,12 +68,6 @@ class QuizTableViewController: UITableViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-//    func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-//        print("inside viewcontroller")
-//        let questionViewController = segue!.destination as! QuestionViewController;
-//        // questionViewController.text = "Segue information worked"
-//    }
-    
     // MARK: - Table view data source
     
     /*
@@ -70,6 +76,19 @@ class QuizTableViewController: UITableViewController {
      return 0
      }
      */
+    
+    override func prepare(for segue: UIStoryboardSegue!,sender: Any?) {
+        if (segue.identifier == "cellToQuestion") {
+            print("inside prepare")
+            let quiz = sender as! QuizTableViewCell
+            let questionViewController = segue!.destination as! QuestionViewController
+            questionViewController.titlePassed = quiz.titleLabel.text
+            questionViewController.questionPassed = questions[1]
+            questionViewController.questions = self.questions
+            questionViewController.answers = self.answers
+            count = count + 1
+        }
+    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
@@ -83,21 +102,26 @@ class QuizTableViewController: UITableViewController {
         let title = model[indexPath.row]["category"]!
         let description = model[indexPath.row]["desc"]!
         let image = model[indexPath.row]["image"]!
-        let questionModel = QuestionModel(title: title, desc: description, imageName: image)
-        self.data.append(questionModel)
-        self.questionvc = storyboard?.instantiateViewController(withIdentifier: "QuestionViewController") as! QuestionViewController
-        print(self.questionvc)
-        // self.questionvc.data = self.data[indexPath.row]
-        print(self.data[indexPath.row].title)
-        print(self.questionvc)
-        self.questionvc.titleLabel.text = self.data[indexPath.row].title
         cell.titleLabel.text = title
         cell.descLabel.text = description
         cell.setImage(imageName: image)
-        NSLog("\(self.questionvc.data)")
         
         return cell
     }
+    
+//        override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//            passTitle = model[indexPath.row]["category"]!
+//            print("passed title in the onclick: \(passTitle)")
+//            if (indexPath.row == 0) {
+//    
+//            } else if (indexPath.row == 1) {
+//    
+//            } else {
+//    
+//            }
+//        }
+    
+    
     
     /*
      // Override to support conditional editing of the table view.

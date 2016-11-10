@@ -13,6 +13,8 @@ public struct QuestionModel {
     public var title: String
     public var desc: String
     public var imageName: String
+    public var questions = [String]()
+    public var answers = [[String]]()
     
     init(title: String, desc: String, imageName: String) {
         self.title = title
