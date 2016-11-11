@@ -11,22 +11,39 @@ import UIKit
 class AnswerViewController: UIViewController {
     var passedAnswer: String!
     var passedQuestion: String!
+    var answerChosen: String!
+    var answerIdentifer: String!
+    var count: Int!
 
     @IBOutlet weak var answerLabel: UILabel!
     @IBOutlet weak var questionLabel: UILabel!
+    @IBOutlet weak var resultLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        answerLabel.text = "You selected \(passedAnswer)"
+        answerLabel.text = "You chose: \(passedAnswer!)"
         questionLabel.text = passedQuestion
+        resultLabel.textColor = UIColor.red
+        if (answerIdentifer == answerChosen) {
+            resultLabel.text = "Correct!"
+            resultLabel.textColor = UIColor.green
+            count = count + 1
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func prepare(for segue: UIStoryboardSegue!, sender: Any?) {
+        if segue.identifier == "answerToResults", let resultsViewController = segue.destination as? ResultsViewController {
+            resultsViewController.count = count
+        }
+    }
+
     
 
     /*

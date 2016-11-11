@@ -10,8 +10,6 @@ import UIKit
 
 class QuizTableViewController: UITableViewController {
     var passTitle: String!
-    var questionModel: QuestionModel!
-    var count: Int = 0
     
     var model : [[String:String]] = [
         ["category": "Mathematics", "desc": "Math stuff", "image": "math-icon"],
@@ -29,6 +27,12 @@ class QuizTableViewController: UITableViewController {
         ["4","22","An irrational number","Nobody knows"],
         ["He was bitten by a radioactive spider","He ate a radioactive spider","He is a radioactive spider","He looked at a radioactive spider"],
         ["One of the four classical elements","A magical reaction given to us by Prometheus","A band that hasn't yet been discovered","Fire! Fire! Fire! heh-heh"]
+    ]
+    
+    var answerIdentifier : [String] = [
+        "1",
+        "1",
+        "1"
     ]
     
     override func viewDidLoad() {
@@ -84,6 +88,7 @@ class QuizTableViewController: UITableViewController {
                 questionViewController.titlePassed = passTitle
                 questionViewController.questionPassed = questions[indexPath.row]
                 questionViewController.answers = self.answers[indexPath.row]
+                questionViewController.answerIdentifer = self.answerIdentifier[indexPath.row]
             }
         }
     }

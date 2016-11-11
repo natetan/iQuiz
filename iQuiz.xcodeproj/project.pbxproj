@@ -16,6 +16,7 @@
 		9D6D704E1DCC3972004F1FC7 /* QuizTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6D704D1DCC3972004F1FC7 /* QuizTableViewController.swift */; };
 		9D6D70501DCC3A7A004F1FC7 /* QuizTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6D704F1DCC3A7A004F1FC7 /* QuizTableViewCell.swift */; };
 		9D74FC611DD414890098E53F /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D74FC601DD414890098E53F /* QuestionModel.swift */; };
+		9D85F2591DD587B200DB7476 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D85F2581DD587B200DB7476 /* ResultsViewController.swift */; };
 		9DF4CBF61DD2DDF7007C63BC /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4CBF51DD2DDF7007C63BC /* QuestionViewController.swift */; };
 		9DF4CBF81DD2DE0A007C63BC /* AnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4CBF71DD2DE0A007C63BC /* AnswerViewController.swift */; };
 /* End PBXBuildFile section */
@@ -53,6 +54,7 @@
 		9D6D704D1DCC3972004F1FC7 /* QuizTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizTableViewController.swift; sourceTree = "<group>"; };
 		9D6D704F1DCC3A7A004F1FC7 /* QuizTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizTableViewCell.swift; sourceTree = "<group>"; };
 		9D74FC601DD414890098E53F /* QuestionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
+		9D85F2581DD587B200DB7476 /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		9DF4CBF51DD2DDF7007C63BC /* QuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
 		9DF4CBF71DD2DE0A007C63BC /* AnswerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -110,6 +112,7 @@
 				9D6D704F1DCC3A7A004F1FC7 /* QuizTableViewCell.swift */,
 				9DF4CBF51DD2DDF7007C63BC /* QuestionViewController.swift */,
 				9DF4CBF71DD2DE0A007C63BC /* AnswerViewController.swift */,
+				9D85F2581DD587B200DB7476 /* ResultsViewController.swift */,
 				9D74FC601DD414890098E53F /* QuestionModel.swift */,
 				9D123D271DCC0AFD009C3E6E /* Main.storyboard */,
 				9D123D2A1DCC0AFD009C3E6E /* Assets.xcassets */,
@@ -274,6 +277,7 @@
 				9D123D241DCC0AFD009C3E6E /* AppDelegate.swift in Sources */,
 				9D6D704E1DCC3972004F1FC7 /* QuizTableViewController.swift in Sources */,
 				9DF4CBF81DD2DE0A007C63BC /* AnswerViewController.swift in Sources */,
+				9D85F2591DD587B200DB7476 /* ResultsViewController.swift in Sources */,
 				9D74FC611DD414890098E53F /* QuestionModel.swift in Sources */,
 				9DF4CBF61DD2DDF7007C63BC /* QuestionViewController.swift in Sources */,
 				9D6D70501DCC3A7A004F1FC7 /* QuizTableViewCell.swift in Sources */,

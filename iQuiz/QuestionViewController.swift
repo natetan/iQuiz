@@ -13,6 +13,10 @@ class QuestionViewController: UIViewController {
     var questionPassed: String!
     var answers: [String] = []
     var selectedAnswer: String!
+    var answerIdentifer: String!
+    var answerRight: Bool = false
+    var answerChosen: String = "1"
+    var count: Int!
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var questionLabel: UILabel!
@@ -22,12 +26,15 @@ class QuestionViewController: UIViewController {
     @IBOutlet weak var button3: UIButton!
     @IBOutlet weak var button4: UIButton!
     
+    @IBOutlet weak var nextButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         titleLabel.text = titlePassed
         questionLabel.text = questionPassed
+        nextButton.isHidden = true
+        
         button1.setTitle(answers[0], for: .normal)
         button2.setTitle(answers[1], for: .normal)
         button3.setTitle(answers[2], for: .normal)
@@ -43,6 +50,12 @@ class QuestionViewController: UIViewController {
         if segue.identifier == "questionToAnswer", let answerViewController = segue.destination as? AnswerViewController {
             answerViewController.passedAnswer = selectedAnswer
             answerViewController.passedQuestion = questionPassed
+            answerViewController.answerChosen = answerChosen
+            answerViewController.answerIdentifer = answerIdentifer
+            if (count == nil) {
+                count = 0
+            }
+            answerViewController.count = count
         }
     }
     
@@ -51,6 +64,7 @@ class QuestionViewController: UIViewController {
         unselect(button: button2)
         unselect(button: button3)
         unselect(button: button4)
+        answerChosen = "1"
     }
     
     @IBAction func option2(_ sender: AnyObject) {
@@ -58,6 +72,7 @@ class QuestionViewController: UIViewController {
         unselect(button: button1)
         unselect(button: button3)
         unselect(button: button4)
+        answerChosen = "2"
     }
     
     @IBAction func option3(_ sender: AnyObject) {
@@ -65,6 +80,7 @@ class QuestionViewController: UIViewController {
         unselect(button: button1)
         unselect(button: button2)
         unselect(button: button4)
+        answerChosen = "3"
     }
     
     
@@ -73,11 +89,12 @@ class QuestionViewController: UIViewController {
         unselect(button: button1)
         unselect(button: button2)
         unselect(button: button3)
+        answerChosen = "4"
     }
     
     func select(button: UIButton) {
         button.isSelected = true
-        button.backgroundColor = UIColor.gray
+        nextButton.isHidden = false
         selectedAnswer = button.titleLabel!.text
     }
     
