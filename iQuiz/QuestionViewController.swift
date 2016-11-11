@@ -11,8 +11,7 @@ import UIKit
 class QuestionViewController: UIViewController {
     var titlePassed: String!
     var questionPassed: String!
-    var questions: [String] = []
-    var answers: [[String]] = []
+    var answers: [String] = []
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var questionLabel: UILabel!
@@ -25,14 +24,14 @@ class QuestionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print("QuestionViewController didItLoad")
         // Do any additional setup after loading the view.
         titleLabel.text = titlePassed
         questionLabel.text = questionPassed
-        button1.setTitle(answers[1][0], for: .normal)
-        button2.setTitle(answers[1][1], for: .normal)
-        button3.setTitle(answers[1][2], for: .normal)
-        button4.setTitle(answers[1][3], for: .normal)
+        button1.setTitle(answers[0], for: .normal)
+        button2.setTitle(answers[1], for: .normal)
+        button3.setTitle(answers[2], for: .normal)
+        button4.setTitle(answers[3], for: .normal)
     }
 
     override func didReceiveMemoryWarning() {

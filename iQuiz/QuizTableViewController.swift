@@ -77,16 +77,30 @@ class QuizTableViewController: UITableViewController {
      }
      */
     
-    override func prepare(for segue: UIStoryboardSegue!,sender: Any?) {
-        if (segue.identifier == "cellToQuestion") {
-            print("inside prepare")
-            let quiz = sender as! QuizTableViewCell
-            let questionViewController = segue!.destination as! QuestionViewController
-            questionViewController.titlePassed = quiz.titleLabel.text
-            questionViewController.questionPassed = questions[1]
-            questionViewController.questions = self.questions
-            questionViewController.answers = self.answers
-            count = count + 1
+    //    override func prepare(for segue: UIStoryboardSegue!,sender: Any?) {
+    //        if (segue.identifier == "cellToQuestion") {
+    //            print("prepare start")
+    //            let quiz = sender as! QuizTableViewCell {
+    //
+    //            }
+    //            let questionViewController = segue!.destination as! QuestionViewController
+    //            questionViewController.titlePassed = quiz.titleLabel.text
+    //            questionViewController.questionPassed = questions[1]
+    //            questionViewController.questions = self.questions
+    //            questionViewController.answers = self.answers
+    //            count = count + 1
+    //            print("prepare end")
+    //        }
+    //    }
+    
+    override func prepare(for segue: UIStoryboardSegue!, sender: Any?) {
+        if segue.identifier == "cellToQuestion", let questionViewController = segue.destination as? QuestionViewController {
+            if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
+                var title = model[indexPath.row]["category"]
+                questionViewController.titlePassed = title
+                questionViewController.questionPassed = questions[indexPath.row]
+                questionViewController.answers = self.answers[indexPath.row]
+            }
         }
     }
     
@@ -108,18 +122,6 @@ class QuizTableViewController: UITableViewController {
         
         return cell
     }
-    
-//        override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//            passTitle = model[indexPath.row]["category"]!
-//            print("passed title in the onclick: \(passTitle)")
-//            if (indexPath.row == 0) {
-//    
-//            } else if (indexPath.row == 1) {
-//    
-//            } else {
-//    
-//            }
-//        }
     
     
     
