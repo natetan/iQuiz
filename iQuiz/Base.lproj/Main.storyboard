@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="X9y-t3-I8v" id="6ZS-CB-UKH">
-                                    <frame key="frameInset" width="375" height="43"/>
+                                    <frame key="frameInset" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -28,7 +28,7 @@
                                 <rect key="frame" x="0.0" y="136" width="375" height="72"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="D1L-gq-5Y1" id="GQ5-JH-9X9">
-                                    <frame key="frameInset" width="375" height="71"/>
+                                    <frame key="frameInset" width="375" height="72"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gr2-UZ-S3N">
@@ -107,7 +107,7 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Next" id="t8F-nG-QU7">
                                             <connections>
-                                                <segue destination="9Ay-U2-dxJ" kind="presentation" id="UDX-jO-emb"/>
+                                                <segue destination="9Ay-U2-dxJ" kind="presentation" identifier="questionToAnswer" id="UDX-jO-emb"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -194,16 +194,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Answer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bq6-ki-t2T">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Answer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bq6-ki-t2T">
                                 <frame key="frameInset" minX="16" minY="65" width="343" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YAN-PH-sUH">
-                                <frame key="frameInset" minY="623" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YAN-PH-sUH">
                                 <items>
                                     <navigationItem id="pFd-o1-Zl7">
                                         <barButtonItem key="leftBarButtonItem" title="Home" id="n7s-qC-KpV">
@@ -211,17 +208,71 @@
                                                 <segue destination="5Hi-Qr-pR7" kind="presentation" id="2Hy-wC-Jdt"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Next" id="ar4-bF-WDc"/>
+                                        <barButtonItem key="rightBarButtonItem" title="Next" id="ar4-bF-WDc">
+                                            <connections>
+                                                <segue destination="cke-zM-rlL" kind="presentation" identifier="answerToResults" id="cxD-Pr-X1X"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YPX-Hd-RWo">
+                                <frame key="frameInset" minX="16" minY="212" width="343" height="66"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Correct!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kxe-Vh-d6D">
+                                <frame key="frameInset" minX="16" minY="433" width="343" height="66"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="YAN-PH-sUH" firstAttribute="top" secondItem="kxe-Vh-d6D" secondAttribute="bottom" constant="124" id="Bix-0R-BrJ"/>
+                            <constraint firstItem="k0U-D8-ZzS" firstAttribute="top" secondItem="YAN-PH-sUH" secondAttribute="bottom" id="IUi-3c-5ic"/>
+                            <constraint firstItem="kxe-Vh-d6D" firstAttribute="top" secondItem="YPX-Hd-RWo" secondAttribute="bottom" constant="155" id="JJ5-wV-iDn"/>
+                            <constraint firstItem="YAN-PH-sUH" firstAttribute="leading" secondItem="8cn-a1-6zp" secondAttribute="leading" id="YLD-Gn-wcJ"/>
+                            <constraint firstItem="YPX-Hd-RWo" firstAttribute="top" secondItem="Bq6-ki-t2T" secondAttribute="bottom" constant="107" id="YhA-xr-Y2G"/>
+                            <constraint firstAttribute="trailing" secondItem="YAN-PH-sUH" secondAttribute="trailing" id="bz4-8d-cZF"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="answerLabel" destination="YPX-Hd-RWo" id="4II-Lh-nIF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ODo-6e-YVd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1943.2" y="36.431784107946029"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="aD2-VA-9D5">
+            <objects>
+                <viewController id="cke-zM-rlL" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jwi-1s-rKX"/>
+                        <viewControllerLayoutGuide type="bottom" id="FFQ-Oj-UFV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZiM-f1-Hwn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Results" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x4e-iq-Jzz">
+                                <frame key="frameInset" minX="16" minY="65" width="343" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dg7-kG-OIv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2664.8000000000002" y="35.532233883058474"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ylp-IG-saI">
@@ -241,6 +292,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="OWN-vf-yXT"/>
+        <segue reference="2Hy-wC-Jdt"/>
     </inferredMetricsTieBreakers>
 </document>

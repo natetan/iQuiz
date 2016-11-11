@@ -9,11 +9,15 @@
 import UIKit
 
 class AnswerViewController: UIViewController {
+    var passedAnswer: String!
 
+    @IBOutlet weak var answerLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        answerLabel.text = "You selected \(passedAnswer)"
     }
 
     override func didReceiveMemoryWarning() {

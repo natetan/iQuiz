@@ -12,6 +12,7 @@ class QuestionViewController: UIViewController {
     var titlePassed: String!
     var questionPassed: String!
     var answers: [String] = []
+    var selectedAnswer: String!
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var questionLabel: UILabel!
@@ -24,7 +25,6 @@ class QuestionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("QuestionViewController didItLoad")
         // Do any additional setup after loading the view.
         titleLabel.text = titlePassed
         questionLabel.text = questionPassed
@@ -37,6 +37,12 @@ class QuestionViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue!, sender: Any?) {
+        if segue.identifier == "questionToAnswer", let answerViewController = segue.destination as? AnswerViewController {
+            answerViewController.passedAnswer = selectedAnswer
+        }
     }
     
     @IBAction func option1(_ sender: AnyObject) {
@@ -71,6 +77,7 @@ class QuestionViewController: UIViewController {
     func select(button: UIButton) {
         button.isSelected = true
         button.backgroundColor = UIColor.gray
+        selectedAnswer = button.titleLabel!.text
     }
     
     func unselect(button: UIButton) {
