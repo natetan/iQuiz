@@ -42,6 +42,7 @@ class QuestionViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue!, sender: Any?) {
         if segue.identifier == "questionToAnswer", let answerViewController = segue.destination as? AnswerViewController {
             answerViewController.passedAnswer = selectedAnswer
+            answerViewController.passedQuestion = questionPassed
         }
     }
     
