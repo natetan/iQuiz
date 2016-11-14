@@ -10,7 +10,7 @@ import UIKit
 
 class ResultsViewController: UIViewController {
     
-    var count: Int!
+    var numberCorrect: Int!
     
     @IBOutlet weak var resultLabel: UILabel!
     
@@ -18,7 +18,7 @@ class ResultsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        resultLabel.text = "You got \(count!) right"
+        resultLabel.text = "You got \(self.numberCorrect!) right"
     }
 
     override func didReceiveMemoryWarning() {

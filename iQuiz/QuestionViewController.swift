@@ -14,9 +14,8 @@ class QuestionViewController: UIViewController {
     var answers: [String] = []
     var selectedAnswer: String!
     var answerIdentifer: String!
-    var answerRight: Bool = false
     var answerChosen: String = "1"
-    var count: Int!
+    var numberCorrect: Int!
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var questionLabel: UILabel!
@@ -48,14 +47,14 @@ class QuestionViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue!, sender: Any?) {
         if segue.identifier == "questionToAnswer", let answerViewController = segue.destination as? AnswerViewController {
-            answerViewController.passedAnswer = selectedAnswer
-            answerViewController.passedQuestion = questionPassed
-            answerViewController.answerChosen = answerChosen
-            answerViewController.answerIdentifer = answerIdentifer
-            if (count == nil) {
-                count = 0
+            answerViewController.passedAnswer = self.selectedAnswer
+            answerViewController.passedQuestion = self.questionPassed
+            answerViewController.answerChosen = self.answerChosen
+            answerViewController.answerIdentifer = self.answerIdentifer
+            if (numberCorrect == nil) {
+                numberCorrect = 0
             }
-            answerViewController.count = count
+            answerViewController.numberCorrect = self.numberCorrect
         }
     }
     

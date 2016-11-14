@@ -13,7 +13,7 @@ class AnswerViewController: UIViewController {
     var passedQuestion: String!
     var answerChosen: String!
     var answerIdentifer: String!
-    var count: Int!
+    var numberCorrect: Int!
 
     @IBOutlet weak var answerLabel: UILabel!
     @IBOutlet weak var questionLabel: UILabel!
@@ -29,7 +29,7 @@ class AnswerViewController: UIViewController {
         if (answerIdentifer == answerChosen) {
             resultLabel.text = "Correct!"
             resultLabel.textColor = UIColor.green
-            count = count + 1
+            numberCorrect = numberCorrect + 1
         }
     }
 
@@ -40,7 +40,7 @@ class AnswerViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue!, sender: Any?) {
         if segue.identifier == "answerToResults", let resultsViewController = segue.destination as? ResultsViewController {
-            resultsViewController.count = count
+            resultsViewController.numberCorrect = self.numberCorrect
         }
     }
 
