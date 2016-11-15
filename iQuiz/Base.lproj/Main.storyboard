@@ -215,7 +215,7 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Next" id="ar4-bF-WDc">
                                             <connections>
-                                                <segue destination="cke-zM-rlL" kind="presentation" identifier="answerToResults" id="cxD-Pr-X1X"/>
+                                                <action selector="nextButton:" destination="9Ay-U2-dxJ" id="4Ue-Ig-umM"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -258,6 +258,8 @@
                         <outlet property="answerLabel" destination="YPX-Hd-RWo" id="4II-Lh-nIF"/>
                         <outlet property="questionLabel" destination="U3t-jb-iuG" id="MFe-Re-HZQ"/>
                         <outlet property="resultLabel" destination="kxe-Vh-d6D" id="92H-vN-rEj"/>
+                        <segue destination="cke-zM-rlL" kind="presentation" identifier="answerToResults" id="dOR-TM-h5d"/>
+                        <segue destination="YMC-K5-yvU" kind="presentation" identifier="answerToQuestion" id="D1E-PF-0bY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ODo-6e-YVd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -337,6 +339,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="lCN-Ga-JVz"/>
+        <segue reference="D1E-PF-0bY"/>
+        <segue reference="Vf2-T2-mnr"/>
     </inferredMetricsTieBreakers>
 </document>

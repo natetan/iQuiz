@@ -11,12 +11,13 @@ import UIKit
 class QuestionViewController: UIViewController {
     var titlePassed: String!
     var questionPassed: [String]!
-    var answers: [String] = []
+    var answers: [[String]]!
     var selectedAnswer: String!
-    var answerIdentifer: String!
+    var answerIdentifer: [String]!
     var answerChosen: String = "1"
     var numberCorrect: Int!
     var questionNumber: Int = 0
+    var totalQuestions: Int!
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var questionLabel: UILabel!
@@ -34,11 +35,11 @@ class QuestionViewController: UIViewController {
         titleLabel.text = titlePassed
         questionLabel.text = questionPassed[questionNumber]
         nextButton.isHidden = true
-        
-        button1.setTitle(answers[0], for: .normal)
-        button2.setTitle(answers[1], for: .normal)
-        button3.setTitle(answers[2], for: .normal)
-        button4.setTitle(answers[3], for: .normal)
+        print(answers)
+        button1.setTitle(answers[questionNumber][0], for: .normal)
+        button2.setTitle(answers[questionNumber][1], for: .normal)
+        button3.setTitle(answers[questionNumber][2], for: .normal)
+        button4.setTitle(answers[questionNumber][3], for: .normal)
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,9 +50,12 @@ class QuestionViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue!, sender: Any?) {
         if segue.identifier == "questionToAnswer", let answerViewController = segue.destination as? AnswerViewController {
             answerViewController.passedAnswer = self.selectedAnswer
-            answerViewController.passedQuestion = self.questionPassed[questionNumber]
+            answerViewController.passedQuestion = self.questionPassed
             answerViewController.answerChosen = self.answerChosen
             answerViewController.answerIdentifer = self.answerIdentifer
+            answerViewController.totalQuestions = self.totalQuestions
+            answerViewController.titlePassed = self.titlePassed
+            answerViewController.answers = self.answers
             if (numberCorrect == nil) {
                 numberCorrect = 0
             }

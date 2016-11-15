@@ -19,20 +19,20 @@ class QuizTableViewController: UITableViewController {
     
     var questions : [[String]] = [
         ["What is 2 + 2?"],
-        ["How did Spider-Man get his powers?"],
+        ["How did Spider-Man get his powers?", "Who is Spider-Man's crime-fighting partner and lover?"],
         ["What is fire?"]
     ]
     
-    var answers : [[String]] = [
-        ["4","22","An irrational number","Nobody knows"],
-        ["He was bitten by a radioactive spider","He ate a radioactive spider","He is a radioactive spider","He looked at a radioactive spider"],
-        ["One of the four classical elements","A magical reaction given to us by Prometheus","A band that hasn't yet been discovered","Fire! Fire! Fire! heh-heh"]
+    var answers : [[[String]]] = [
+        [["4","22","An irrational number","Nobody knows"]],
+        [["He was bitten by a radioactive spider","He ate a radioactive spider","He is a radioactive spider","He looked at a radioactive spider"], ["Elektra Natachios", "Gwen Stacy", "Mary Jane Watson", "Felicia Hardy"]],
+        [["One of the four classical elements","A magical reaction given to us by Prometheus","A band that hasn't yet been discovered","Fire! Fire! Fire! heh-heh"]]
     ]
     
-    var answerIdentifier : [String] = [
-        "1",
-        "1",
-        "1"
+    var answerIdentifier : [[String]] = [
+        ["1"],
+        ["1", "4"],
+        ["1"]
     ]
     
     override func viewDidLoad() {
@@ -89,6 +89,7 @@ class QuizTableViewController: UITableViewController {
                 questionViewController.questionPassed = self.questions[indexPath.row]
                 questionViewController.answers = self.answers[indexPath.row]
                 questionViewController.answerIdentifer = self.answerIdentifier[indexPath.row]
+                questionViewController.totalQuestions = self.questions[indexPath.row].count
             }
         }
     }
