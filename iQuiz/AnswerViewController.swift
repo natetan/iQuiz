@@ -16,7 +16,6 @@ class AnswerViewController: UIViewController {
     var answerIdentifer: [String]!
     var numberCorrect: Int!
     var questionNumber: Int!
-    var totalQuestions: Int!
     var answers: [[String]]!
     
     @IBOutlet weak var answerLabel: UILabel!
@@ -55,6 +54,7 @@ class AnswerViewController: UIViewController {
         } else {
             let results = segue.destination as! ResultsViewController
             results.numberCorrect = self.numberCorrect
+            results.totalQuestions = self.passedQuestion.count
             
         }
     }

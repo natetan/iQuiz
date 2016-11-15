@@ -11,6 +11,7 @@ import UIKit
 class ResultsViewController: UIViewController {
     
     var numberCorrect: Int!
+    var totalQuestions: Int!
     
     @IBOutlet weak var resultLabel: UILabel!
     
@@ -18,7 +19,7 @@ class ResultsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        resultLabel.text = "You got \(self.numberCorrect!) right"
+        resultLabel.text = "You got \(self.numberCorrect!)/\(self.totalQuestions!) right"
     }
 
     override func didReceiveMemoryWarning() {

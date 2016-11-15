@@ -89,7 +89,6 @@ class QuizTableViewController: UITableViewController {
                 questionViewController.questionPassed = self.questions[indexPath.row]
                 questionViewController.answers = self.answers[indexPath.row]
                 questionViewController.answerIdentifer = self.answerIdentifier[indexPath.row]
-                questionViewController.totalQuestions = self.questions[indexPath.row].count
             }
         }
     }

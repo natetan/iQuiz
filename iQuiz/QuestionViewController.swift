@@ -17,7 +17,6 @@ class QuestionViewController: UIViewController {
     var answerChosen: String = "1"
     var numberCorrect: Int!
     var questionNumber: Int!
-    var totalQuestions: Int!
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var questionLabel: UILabel!
@@ -55,7 +54,6 @@ class QuestionViewController: UIViewController {
             answerViewController.passedQuestion = self.questionPassed
             answerViewController.answerChosen = self.answerChosen
             answerViewController.answerIdentifer = self.answerIdentifer
-            answerViewController.totalQuestions = self.totalQuestions
             answerViewController.titlePassed = self.titlePassed
             answerViewController.answers = self.answers
             answerViewController.questionNumber = self.questionNumber
