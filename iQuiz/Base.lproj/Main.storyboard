@@ -148,7 +148,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="0.76848732399085184" blue="0.86664522533194888" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="2EN-Ga-UAk" firstAttribute="leading" secondItem="bgn-eS-3ZX" secondAttribute="leadingMargin" id="0JI-SR-pna"/>
                             <constraint firstItem="NKM-Lm-mie" firstAttribute="top" secondItem="HP2-JE-3ze" secondAttribute="bottom" constant="30" id="1Lt-Dv-BOd"/>
@@ -186,7 +186,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TFQ-MB-gO7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1157.5999999999999" y="35.532233883058474"/>
+            <point key="canvasLocation" x="1166" y="36"/>
         </scene>
         <!--Answer View Controller-->
         <scene sceneID="zvc-7x-cNh">
@@ -237,7 +237,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.29065238769304935" green="1" blue="0.98562213111035946" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="YPX-Hd-RWo" firstAttribute="trailing" secondItem="8cn-a1-6zp" secondAttribute="trailingMargin" id="0Ow-zF-bRc"/>
                             <constraint firstItem="YPX-Hd-RWo" firstAttribute="leading" secondItem="8cn-a1-6zp" secondAttribute="leadingMargin" id="4Zc-Hw-2If"/>
@@ -303,7 +303,7 @@
                                 </items>
                             </navigationBar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.31629275703993687" green="1" blue="0.78876422864420637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="TZr-qt-Ew3" secondAttribute="trailing" id="1Jx-dk-AWc"/>
                             <constraint firstItem="x4e-iq-Jzz" firstAttribute="trailing" secondItem="ZiM-f1-Hwn" secondAttribute="trailingMargin" id="4Rh-ss-ysd"/>
