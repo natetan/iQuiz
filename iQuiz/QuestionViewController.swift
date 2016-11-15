@@ -10,12 +10,13 @@ import UIKit
 
 class QuestionViewController: UIViewController {
     var titlePassed: String!
-    var questionPassed: String!
+    var questionPassed: [String]!
     var answers: [String] = []
     var selectedAnswer: String!
     var answerIdentifer: String!
     var answerChosen: String = "1"
     var numberCorrect: Int!
+    var questionNumber: Int = 0
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var questionLabel: UILabel!
@@ -31,7 +32,7 @@ class QuestionViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         titleLabel.text = titlePassed
-        questionLabel.text = questionPassed
+        questionLabel.text = questionPassed[questionNumber]
         nextButton.isHidden = true
         
         button1.setTitle(answers[0], for: .normal)
@@ -48,7 +49,7 @@ class QuestionViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue!, sender: Any?) {
         if segue.identifier == "questionToAnswer", let answerViewController = segue.destination as? AnswerViewController {
             answerViewController.passedAnswer = self.selectedAnswer
-            answerViewController.passedQuestion = self.questionPassed
+            answerViewController.passedQuestion = self.questionPassed[questionNumber]
             answerViewController.answerChosen = self.answerChosen
             answerViewController.answerIdentifer = self.answerIdentifer
             if (numberCorrect == nil) {

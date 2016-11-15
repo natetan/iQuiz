@@ -14,6 +14,7 @@ class AnswerViewController: UIViewController {
     var answerChosen: String!
     var answerIdentifer: String!
     var numberCorrect: Int!
+    var questionNumber: Int!
 
     @IBOutlet weak var answerLabel: UILabel!
     @IBOutlet weak var questionLabel: UILabel!

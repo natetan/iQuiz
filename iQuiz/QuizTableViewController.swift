@@ -17,10 +17,10 @@ class QuizTableViewController: UITableViewController {
         ["category": "Science", "desc": "Science facts", "image": "science-icon"]
     ]
     
-    var questions : [String] = [
-        "What is 2 + 2?",
-        "How did Spider-Man get his powers?",
-        "What is fire?"
+    var questions : [[String]] = [
+        ["What is 2 + 2?"],
+        ["How did Spider-Man get his powers?"],
+        ["What is fire?"]
     ]
     
     var answers : [[String]] = [
@@ -85,8 +85,8 @@ class QuizTableViewController: UITableViewController {
         if segue.identifier == "cellToQuestion", let questionViewController = segue.destination as? QuestionViewController {
             if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
                 passTitle = model[indexPath.row]["category"]
-                questionViewController.titlePassed = passTitle
-                questionViewController.questionPassed = questions[indexPath.row]
+                questionViewController.titlePassed = self.passTitle
+                questionViewController.questionPassed = self.questions[indexPath.row]
                 questionViewController.answers = self.answers[indexPath.row]
                 questionViewController.answerIdentifer = self.answerIdentifier[indexPath.row]
             }
