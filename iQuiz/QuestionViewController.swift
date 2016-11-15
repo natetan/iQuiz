@@ -16,7 +16,7 @@ class QuestionViewController: UIViewController {
     var answerIdentifer: [String]!
     var answerChosen: String = "1"
     var numberCorrect: Int!
-    var questionNumber: Int = 0
+    var questionNumber: Int!
     var totalQuestions: Int!
 
     @IBOutlet weak var titleLabel: UILabel!
@@ -33,9 +33,11 @@ class QuestionViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         titleLabel.text = titlePassed
+        if (questionNumber == nil) {
+            questionNumber = 0
+        }
         questionLabel.text = questionPassed[questionNumber]
         nextButton.isHidden = true
-        print(answers)
         button1.setTitle(answers[questionNumber][0], for: .normal)
         button2.setTitle(answers[questionNumber][1], for: .normal)
         button3.setTitle(answers[questionNumber][2], for: .normal)
@@ -56,6 +58,7 @@ class QuestionViewController: UIViewController {
             answerViewController.totalQuestions = self.totalQuestions
             answerViewController.titlePassed = self.titlePassed
             answerViewController.answers = self.answers
+            answerViewController.questionNumber = self.questionNumber
             if (numberCorrect == nil) {
                 numberCorrect = 0
             }

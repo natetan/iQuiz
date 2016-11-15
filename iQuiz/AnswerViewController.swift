@@ -28,9 +28,6 @@ class AnswerViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         answerLabel.text = "You chose: \(passedAnswer!)"
-        if (questionNumber == nil) {
-            questionNumber = 0
-        }
         questionLabel.text = passedQuestion[questionNumber]
         resultLabel.textColor = UIColor.red
         if (answerIdentifer[questionNumber] == answerChosen) {
@@ -46,10 +43,7 @@ class AnswerViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue!, sender: Any?) {
-        if (totalQuestions - 1 > questionNumber) {
-            
-            print (totalQuestions)
-            print (questionNumber)
+        if (passedQuestion.count - 1 > questionNumber) {
             let nextQuestion = segue.destination as! QuestionViewController
             nextQuestion.questionNumber = self.questionNumber + 1
             nextQuestion.numberCorrect = self.numberCorrect
@@ -66,10 +60,8 @@ class AnswerViewController: UIViewController {
     }
     
     @IBAction func nextButton(_ sender: AnyObject) {
-        print (totalQuestions)
-        print (questionNumber)
         var destination = "answerToResults"
-        if (totalQuestions - 1 > questionNumber) {
+        if (passedQuestion.count - 1 > questionNumber) {
             destination = "answerToQuestion"
         }
         self.performSegue(withIdentifier: destination, sender: self)
