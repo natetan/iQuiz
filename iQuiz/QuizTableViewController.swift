@@ -42,6 +42,44 @@ class QuizTableViewController: UITableViewController {
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        // JSON request
+        let requestURL: URL = URL(string: "http://tednewardsandbox.site44.com/questions.json")!
+        let urlRequest: MutableURLRequest = MutableURLRequest(url: requestURL)
+        let session = URLSession.shared
+        let task = session.dataTask(with: urlRequest as URLRequest) {
+            (data, response, error) -> Void in
+            
+            let httpResponse = response as! HTTPURLResponse
+            let statusCode = httpResponse.statusCode
+            
+            if (statusCode == 200) {
+                print("JSON request successful")
+                
+                do {
+                    if let json = try? JSONSerialization.jsonObject(with: data!, options:.allowFragments) as? [Dictionary<String,AnyObject>] {
+                        for index in 0...(json?.count)! - 1 {
+                            if let subject = json?[index] {
+                                NSLog("Subject \(index): \(subject["title"] as! String)")
+                                if let title = subject["title"] as? String {
+                                    //handle the title
+                                }
+                                
+                            }
+                        }
+                        
+                    }
+                    
+                
+//                    let titles = json?[0]["title"] as! String
+                    //print(titles)
+                } catch {
+                    print("Error with json: \(error)")
+                }
+            }
+        }
+        
+        task.resume()
     }
     
     override func didReceiveMemoryWarning() {
