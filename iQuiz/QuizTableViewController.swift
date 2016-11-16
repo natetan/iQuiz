@@ -86,11 +86,9 @@ class QuizTableViewController: UITableViewController {
                                         self.model[index]["desc"] = desc
                                     }
                                     if let questions = subject["questions"] as? [Dictionary<String, AnyObject>] {
-                                        NSLog("Questions: \(questions)")
                                         print("Question Count for category: \(questions.count)")
                                         
                                         for i in 0...questions.count - 1 {
-                                            NSLog("Question \(i): \(questions[i])")
                                             if let text = questions[i]["text"] as? String {
                                                 self.questions[index].append(text)
                                             }
