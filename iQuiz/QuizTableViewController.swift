@@ -125,7 +125,7 @@ class QuizTableViewController: UITableViewController {
             textField.attributedPlaceholder = NSAttributedString(string:"Type here", attributes:[NSForegroundColorAttributeName: UIColor.gray])
         }
         
-        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
+        alertController.addAction(UIAlertAction(title: "Check Now", style: .default, handler: { (_) in
             self.urlLink = alertController.textFields![0].text! // Force unwrapping because we know it exists.
             self.makeJSONRequest(url: self.urlLink)
         }))
