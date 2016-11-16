@@ -12,26 +12,26 @@ class QuizTableViewController: UITableViewController {
     var passTitle: String!
     
     var model : [[String:String]] = [
-        ["category": "Mathematics", "desc": "Math stuff"],
+        ["category": "Science!", "desc": "Science stuff"],
         ["category": "Marvel Super Heroes", "desc": "Spider-Man and his homies"],
-        ["category": "Science!", "desc": "Science facts",]
+        ["category": "Mathematics", "desc": "Math stuff",]
     ]
     
     var questions : [[String]] = [
-        ["What is 2 + 2?"],
-        ["How did Spider-Man get his powers?", "Who is Spider-Man's crime-fighting partner and lover?"],
-        ["What is fire?"]
+        ["What is water"],
+        ["Who is Spider-Man's crime-fighting partner and lover?"],
+        ["What is the absolute value of -2?"]
     ]
     
     var answers : [[[String]]] = [
-        [["4","22","An irrational number","Nobody knows"]],
-        [["He was bitten by a radioactive spider","He ate a radioactive spider","He is a radioactive spider","He looked at a radioactive spider"], ["Elektra Natachios", "Gwen Stacy", "Mary Jane Watson", "Felicia Hardy"]],
-        [["One of the four classical elements","A magical reaction given to us by Prometheus","A band that hasn't yet been discovered","Fire! Fire! Fire! heh-heh"]]
+        [["H20","The thing in the ocean","You tell me","lol idk"]],
+        [["Elektra Natachios", "Gwen Stacy", "Mary Jane Watson", "Felicia Hardy"]],
+        [["2","-2","It's a trick question","Absolution"]]
     ]
     
     var answerIdentifier : [[String]] = [
         ["1"],
-        ["1", "4"],
+        ["4"],
         ["1"]
     ]
     
