@@ -12,9 +12,9 @@ class QuizTableViewController: UITableViewController {
     var passTitle: String!
     
     var model : [[String:String]] = [
-        ["category": "Mathematics", "desc": "Math stuff", "image": "math-icon"],
-        ["category": "Marvel Superheroes", "desc": "Spider-Man and his homies", "image": "marvel-icon"],
-        ["category": "Science", "desc": "Science facts", "image": "science-icon"]
+        ["category": "Mathematics", "desc": "Math stuff"],
+        ["category": "Marvel Super Heroes", "desc": "Spider-Man and his homies"],
+        ["category": "Science!", "desc": "Science facts",]
     ]
     
     var questions : [[String]] = [
@@ -58,24 +58,39 @@ class QuizTableViewController: UITableViewController {
                 
                 do {
                     if let json = try? JSONSerialization.jsonObject(with: data!, options:.allowFragments) as? [Dictionary<String,AnyObject>] {
+                        print ("category count: \(json?.count)")
                         for index in 0...(json?.count)! - 1 {
                             if let subject = json?[index] {
-                                NSLog("Subject \(index): \(subject["title"] as! String), \(subject["desc"] as! String)")
+                                //NSLog("Subject \(index): \(subject["title"] as! String), \(subject["desc"] as! String)")
                                 if let title = subject["title"] as? String {
-                                    //handle the title
                                     self.model[index]["category"] = title
                                 }
                                 if let desc = subject["desc"] as? String {
                                     self.model[index]["desc"] = desc
                                 }
-                                
+                                if let questions = subject["questions"] as? [Dictionary<String, AnyObject>] {
+                                    NSLog("Questions: \(questions)")
+                                    print("Question Count for category: \(questions.count)")
+                                    
+                                    for i in 0...questions.count - 1 {
+                                        NSLog("Question \(i): \(questions[i])")
+                                        if let text = questions[i]["text"] as? String {
+                                            self.questions[index].append(text)
+                                        }
+                                        if let answer = questions[i]["answer"] as? String {
+                                            self.answerIdentifier[index].append(answer)
+                                        }
+                                        if let answers = questions[i]["answers"] as? [String] {
+                                            self.answers[index].append(answers)
+                                        }
+                                    }
+                                }
                             }
                         }
-                        
                     }
                     
-                
-//                    let titles = json?[0]["title"] as! String
+                    
+                    //                    let titles = json?[0]["title"] as! String
                     //print(titles)
                 } catch {
                     print("Error with json: \(error)")
@@ -146,7 +161,7 @@ class QuizTableViewController: UITableViewController {
         // Configure the cell...
         let title = model[indexPath.row]["category"]!
         let description = model[indexPath.row]["desc"]!
-        let image = model[indexPath.row]["image"]!
+        let image = model[indexPath.row]["category"]!
         cell.titleLabel.text = title
         cell.descLabel.text = description
         cell.setImage(imageName: image)
