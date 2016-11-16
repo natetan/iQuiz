@@ -61,6 +61,63 @@ class FileSaveHelper {
         self.fullyQualifiedPath = "\(filePath)/\(self.fileName)"
         //4
         print(self.directoryPath)
+        createDirectory()
+    }
+    
+    private func createDirectory(){
+        //1
+        if !directoryExists {
+            do {
+                //2
+                try fileManager.createDirectory(atPath: filePath, withIntermediateDirectories: false, attributes: nil)
+            }
+            catch {
+                print("An Error was generated creating directory")
+            }
+        }
+    }
+    
+    //1
+    func saveFile(string fileContents:String) throws{
+        do {
+            //2
+            try fileContents.write(toFile: fullyQualifiedPath, atomically: true, encoding: String.Encoding.utf8)
+        }
+        catch  {
+            //3
+            throw error
+        }
+    }
+    
+    //1
+    func saveFile(dataForJson dataForJson:AnyObject) throws{
+        do {
+            //2
+            let jsonData = try convertObjectToData(data: dataForJson)
+            if !fileManager.createFile(atPath: fullyQualifiedPath, contents: jsonData as Data, attributes: nil){
+                throw FileErrors.FileNotSaved
+            }
+        } catch {
+            //3
+            print(error)
+            throw FileErrors.FileNotSaved
+        }
+        
+    }
+    
+    //4
+    private func convertObjectToData(data:AnyObject) throws -> NSData {
+        
+        do {
+            //5
+            let newData = try JSONSerialization.data(withJSONObject: data, options: .prettyPrinted)
+            return newData as NSData
+        }
+            //6
+        catch {
+            print("Error writing data: \(error)")
+        }
+        throw FileErrors.JsonNotSerialized
     }
     
 }

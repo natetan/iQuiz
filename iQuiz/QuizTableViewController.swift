@@ -36,6 +36,7 @@ class QuizTableViewController: UITableViewController {
         ["1"]
     ]
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Uncomment the following line to preserve selection between presentations
@@ -46,6 +47,31 @@ class QuizTableViewController: UITableViewController {
         
         // JSON request
         makeJSONRequest(url: self.urlLink)
+        
+        // Setting up files for the JSON objects
+        let modelFile = FileSaveHelper(fileName: "modelFile", fileExtension: .JSON, subDirectory: "SavingFiles", directory: .documentDirectory)
+        let questionsFile = FileSaveHelper(fileName: "questionsFile", fileExtension: .JSON, subDirectory: "SavingFiles", directory: .documentDirectory)
+        let answersFile = FileSaveHelper(fileName: "answersFile", fileExtension: .JSON, subDirectory: "SavingFiles", directory: .documentDirectory)
+        let answerIdentifierFile = FileSaveHelper(fileName: "answerIdentifierFile", fileExtension: .JSON, subDirectory: "SavingFiles", directory: .documentDirectory)
+        
+        // Save files to local storage
+        do {
+            
+            try modelFile.saveFile(dataForJson: self.model as AnyObject)
+            try questionsFile.saveFile(dataForJson: self.questions as AnyObject)
+            try answersFile.saveFile(dataForJson: self.answers as AnyObject)
+            try answerIdentifierFile.saveFile(dataForJson: self.answerIdentifier as AnyObject)
+        }
+        catch {
+            print(error)
+        }
+        
+        // Test if files are there
+        print("Model file exists: \(modelFile.fileExists)")
+        print("Questions file exists: \(questionsFile.fileExists)")
+        print("Answers file exists: \(answersFile.fileExists)")
+        print("Answer Identifier file exists: \(answerIdentifierFile.fileExists)")
+        
     }
     
     override func didReceiveMemoryWarning() {
