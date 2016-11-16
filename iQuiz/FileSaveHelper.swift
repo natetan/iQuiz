@@ -15,6 +15,9 @@ class FileSaveHelper {
     private enum FileErrors:Error {
         case JsonNotSerialized
         case FileNotSaved
+        case ImageNotConvertedToData
+        case FileNotRead
+        case FileNotFound
         
     }
     
@@ -118,6 +121,42 @@ class FileSaveHelper {
             print("Error writing data: \(error)")
         }
         throw FileErrors.JsonNotSerialized
+    }
+    
+    // 1
+    func getContentsOfFile() throws -> String {
+        // 2
+        guard fileExists else {
+            throw FileErrors.FileNotFound
+        }
+        
+        // 3
+        var returnString:String
+        do {
+            returnString = try String(contentsOfFile: fullyQualifiedPath, encoding: String.Encoding.utf8)
+        } catch {
+            throw FileErrors.FileNotRead
+        }
+        // 4
+        return returnString
+    }
+    
+    // 1
+    func getJSONData() throws -> NSDictionary {
+        // 2
+        guard fileExists else {
+            throw FileErrors.FileNotFound
+        }
+        
+        do {
+            // 3
+            let data = try NSData(contentsOfFile: fullyQualifiedPath, options: NSData.ReadingOptions.mappedIfSafe)
+            // 4
+            let jsonDictionary = try JSONSerialization.jsonObject(with: data as Data, options: .allowFragments) as! NSDictionary
+            return jsonDictionary
+        } catch {
+            throw FileErrors.FileNotRead
+        }
     }
     
 }

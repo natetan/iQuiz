@@ -132,6 +132,24 @@ class QuizTableViewController: UITableViewController {
                     } catch {
                         print("Error with json: \(error)")
                     }
+                } else {
+                    let modelFile = FileSaveHelper(fileName: "modelFile", fileExtension: .JSON, subDirectory: "SavingFiles", directory: .documentDirectory)
+                    let questionsFile = FileSaveHelper(fileName: "questionsFile", fileExtension: .JSON, subDirectory: "SavingFiles", directory: .documentDirectory)
+                    let answersFile = FileSaveHelper(fileName: "answersFile", fileExtension: .JSON, subDirectory: "SavingFiles", directory: .documentDirectory)
+                    let answerIdentifierFile = FileSaveHelper(fileName: "answerIdentifierFile", fileExtension: .JSON, subDirectory: "SavingFiles", directory: .documentDirectory)
+                    
+                    do {
+                        // This was an attempt to use the saved data in the storage, which was successfully stored in viewDidLoad
+                        
+//                        try self.model = modelFile.getJSONData()
+//                        try self.questions = questionsFile.getJSONData()
+//                        try self.answers = answersFile.getJSONData()
+//                        try self.answerIdentifier = answerIdentifierFile.getJSONData()
+                    }
+                    catch {
+                        print(error)
+                    }
+                    
                 }
             }
             
