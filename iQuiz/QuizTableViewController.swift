@@ -61,7 +61,6 @@ class QuizTableViewController: UITableViewController {
                         print ("category count: \(json?.count)")
                         for index in 0...(json?.count)! - 1 {
                             if let subject = json?[index] {
-                                //NSLog("Subject \(index): \(subject["title"] as! String), \(subject["desc"] as! String)")
                                 if let title = subject["title"] as? String {
                                     self.model[index]["category"] = title
                                 }
@@ -88,10 +87,6 @@ class QuizTableViewController: UITableViewController {
                             }
                         }
                     }
-                    
-                    
-                    //                    let titles = json?[0]["title"] as! String
-                    //print(titles)
                 } catch {
                     print("Error with json: \(error)")
                 }
