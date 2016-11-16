@@ -60,9 +60,13 @@ class QuizTableViewController: UITableViewController {
                     if let json = try? JSONSerialization.jsonObject(with: data!, options:.allowFragments) as? [Dictionary<String,AnyObject>] {
                         for index in 0...(json?.count)! - 1 {
                             if let subject = json?[index] {
-                                NSLog("Subject \(index): \(subject["title"] as! String)")
+                                NSLog("Subject \(index): \(subject["title"] as! String), \(subject["desc"] as! String)")
                                 if let title = subject["title"] as? String {
                                     //handle the title
+                                    self.model[index]["category"] = title
+                                }
+                                if let desc = subject["desc"] as? String {
+                                    self.model[index]["desc"] = desc
                                 }
                                 
                             }
