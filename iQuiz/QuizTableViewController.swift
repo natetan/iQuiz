@@ -10,6 +10,7 @@ import UIKit
 
 class QuizTableViewController: UITableViewController {
     var passTitle: String!
+    var urlLink = "http://tednewardsandbox.site44.com/questions.json"
     
     var model : [[String:String]] = [
         ["category": "Science!", "desc": "Science stuff"],
@@ -44,56 +45,7 @@ class QuizTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         // JSON request
-        let requestURL: URL = URL(string: "http://tednewardsandbox.site44.com/questions.json")!
-        let urlRequest: MutableURLRequest = MutableURLRequest(url: requestURL)
-        let session = URLSession.shared
-        let task = session.dataTask(with: urlRequest as URLRequest) {
-            (data, response, error) -> Void in
-            
-            let httpResponse = response as! HTTPURLResponse
-            let statusCode = httpResponse.statusCode
-            
-            if (statusCode == 200) {
-                print("JSON request successful")
-                
-                do {
-                    if let json = try? JSONSerialization.jsonObject(with: data!, options:.allowFragments) as? [Dictionary<String,AnyObject>] {
-                        print ("category count: \(json?.count)")
-                        for index in 0...(json?.count)! - 1 {
-                            if let subject = json?[index] {
-                                if let title = subject["title"] as? String {
-                                    self.model[index]["category"] = title
-                                }
-                                if let desc = subject["desc"] as? String {
-                                    self.model[index]["desc"] = desc
-                                }
-                                if let questions = subject["questions"] as? [Dictionary<String, AnyObject>] {
-                                    NSLog("Questions: \(questions)")
-                                    print("Question Count for category: \(questions.count)")
-                                    
-                                    for i in 0...questions.count - 1 {
-                                        NSLog("Question \(i): \(questions[i])")
-                                        if let text = questions[i]["text"] as? String {
-                                            self.questions[index].append(text)
-                                        }
-                                        if let answer = questions[i]["answer"] as? String {
-                                            self.answerIdentifier[index].append(answer)
-                                        }
-                                        if let answers = questions[i]["answers"] as? [String] {
-                                            self.answers[index].append(answers)
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                } catch {
-                    print("Error with json: \(error)")
-                }
-            }
-        }
-        
-        task.resume()
+        makeJSONRequest(url: self.urlLink)
     }
     
     override func didReceiveMemoryWarning() {
@@ -101,23 +53,88 @@ class QuizTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func makeJSONRequest(url: String) {
+        if (URL(string: url) == nil) {
+            let alertController = UIAlertController(title: "Link is invalid. Please try again", message: "", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+                UIAlertAction in
+            }
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true, completion: nil)
+        } else {
+            let requestURL: URL = URL(string: url)!
+            let urlRequest: MutableURLRequest = MutableURLRequest(url: requestURL)
+            let session = URLSession.shared
+            let task = session.dataTask(with: urlRequest as URLRequest) {
+                (data, response, error) -> Void in
+                
+                let httpResponse = response as! HTTPURLResponse
+                let statusCode = httpResponse.statusCode
+                
+                if (statusCode == 200) {
+                    print("JSON request successful")
+                    
+                    do {
+                        if let json = try? JSONSerialization.jsonObject(with: data!, options:.allowFragments) as? [Dictionary<String,AnyObject>] {
+                            print ("category count: \(json?.count)")
+                            for index in 0...(json?.count)! - 1 {
+                                if let subject = json?[index] {
+                                    if let title = subject["title"] as? String {
+                                        self.model[index]["category"] = title
+                                    }
+                                    if let desc = subject["desc"] as? String {
+                                        self.model[index]["desc"] = desc
+                                    }
+                                    if let questions = subject["questions"] as? [Dictionary<String, AnyObject>] {
+                                        NSLog("Questions: \(questions)")
+                                        print("Question Count for category: \(questions.count)")
+                                        
+                                        for i in 0...questions.count - 1 {
+                                            NSLog("Question \(i): \(questions[i])")
+                                            if let text = questions[i]["text"] as? String {
+                                                self.questions[index].append(text)
+                                            }
+                                            if let answer = questions[i]["answer"] as? String {
+                                                self.answerIdentifier[index].append(answer)
+                                            }
+                                            if let answers = questions[i]["answers"] as? [String] {
+                                                self.answers[index].append(answers)
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    } catch {
+                        print("Error with json: \(error)")
+                    }
+                }
+            }
+            
+            task.resume()
+        }
+        
+    }
+    
     @IBAction func settingsButton(_ sender: AnyObject) {
         // Create the alert controller
-        let alertController = UIAlertController(title: "Settings go here", message: "", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Settings", message: "Use custom URL", preferredStyle: .alert)
         
-        // Create the actions
-        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
-            UIAlertAction in
-            NSLog("OK Pressed")
+        // Add text field
+        alertController.addTextField { (textField) in
+            textField.attributedPlaceholder = NSAttributedString(string:"Type here", attributes:[NSForegroundColorAttributeName: UIColor.gray])
         }
+        
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
+            self.urlLink = alertController.textFields![0].text! // Force unwrapping because we know it exists.
+            self.makeJSONRequest(url: self.urlLink)
+        }))
         
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) {
             UIAlertAction in
             NSLog("Cancel Pressed")
         }
         
-        // Add the actions
-        alertController.addAction(okAction)
         alertController.addAction(cancelAction)
         
         // Present the controller
